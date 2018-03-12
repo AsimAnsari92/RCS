@@ -104,7 +104,7 @@ padding: 0px 10px;
 					<div class="pricing-title">
 						<h3>Past Due</h3>
 					</div>
-					<div class="pricing-price" id="CountPasDue">0</div>
+					<div class="pricing-price" data-to="15065421" data-refresh-interval="80" data-speed="3000" id="CountPasDue">0</div>
 					<div class="pricing-features">
 						<ul>
 							<li>Permits/Licenses Have Passed Their Renewal Dates</li>

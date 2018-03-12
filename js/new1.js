@@ -1669,7 +1669,7 @@ var IN30Arr=[],IN60Arr=[],IN90Arr=[],INPastArr=[];
 function notifications()
 {
 	var tbl="";
- 	for(var i=0;i<LP30Arr.length;i++)
+ 	for(var i=0;i<LP30Arr.length	;i++)
 	 {
 	var empname = (LP30Arr[i]['empname']==null ? "(Deleted Employee)" : LP30Arr[i]['empname']);
 		  
@@ -1690,8 +1690,7 @@ function notifications()
 	 
 	 tbl+=' <div class="col-md-12 col-md-offset-3"><a href="notifications.php" class="button button-mini  button-rounded">View All</a></div>';
 
-
-	 	var count = LP30Arr.length + LP60Arr.length + LP90Arr.length + LPPastArr.length + C30Arr.length + C60Arr.length + C90Arr.length + CPastArr.length+ IN30Arr.length + IN60Arr.length + IN90Arr.length + INPastArr.length;
+ var count = LP30Arr.length + LP60Arr.length + LP90Arr.length + LPPastArr.length + C30Arr.length + C60Arr.length + C90Arr.length + CPastArr.length+ IN30Arr.length + IN60Arr.length + IN90Arr.length + INPastArr.length;
 
 
 	$(".notifyUl").html("");
@@ -2600,7 +2599,8 @@ function DatatableInit2()
 
 function GetAlltask()
 {  
-loading();
+	var tbl ="";
+ 	//loading();
  	$.ajax({
 		type: "POST", 
 		data:{admin:ADMIN},
@@ -2608,18 +2608,33 @@ loading();
  		url: "http://hivelet.com/rcm/test/api.php?action=GetAlltask", 
 		success:function(response)
 		{
-			//console.log(response);
-			Cloading();
+    response = JSON.parse(response);
+			console.log(response);
+			if(response!='"No Records"')
+			 {
+			 	 for(var i=0;i<response.length;i++)
+				 {
 
-  			 if(response!='"No Records"')
+			 	tbl +='<div href="#" class="list-group-item list-group-item" style="border-bottom: 2px solid #ddd 		\		!important;border:none" >\
+					'+response[i]['tasktype']+ ' ' +response[i]['taskdate']+'\
+					<a href="#" class="button button-3d button-mini button-rounded button-red pull-right" style="margin:0px;">\
+					<i class="icon-remove ml-0"></i></a>\
+					</div>';
+				}
+			 	
+			 }
+
+			 $('.todoList').html(tbl)
+
+			//Cloading();
+
+  			 /*if(response!='"No Records"')
 			 {
 				 $("#myTable").dataTable().fnDestroy();
 				 document.getElementById("AllTaskData").innerHTML ="";
 				 response=JSON.parse(response);
 				 for(var i=0;i<response.length;i++)
 				 { 
-				 
-				 
 				   if(response[i]['Status']=="Pending"){
 				 	document.getElementById("AllTaskData").innerHTML +='<tr>\
 					<td align="center">'+response[i]['taskdate']+'</td>\
@@ -2630,7 +2645,6 @@ loading();
                     <td align="center" class="p-0 colorBlue">'+'<span class="cursor" onClick="gettask('+response[i]['id']+')">View</span> | <span class="cursor" onClick="deleteBox('+response[i]['id']+')">Delete</span></td>\</tr>';
 				   }
 				   else{
-					   
 					document.getElementById("AllTaskData").innerHTML +='<tr>\
 					<td align="center">'+response[i]['taskdate']+'</td>\
  					<td align="center">'+response[i]['tasktype'].substr(0,50)+'</td>\
@@ -2647,7 +2661,7 @@ loading();
 			 $("#myTable").dataTable().fnDestroy();
 			 InfoAlert("No records found.");
 			 document.getElementById("AllTaskData").innerHTML="";
-			}
+			}*/
    		}, 
 		error: function (xhr, status) 
 		{  Cloading();
