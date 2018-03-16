@@ -30,7 +30,7 @@
 						<li class="mega-menu"><a href="index.html"><div>Event</div></a></li>
 						<li class="mega-menu"><a href="#"><div>Employee</div></a></li>
 						<li class="mega-menu"><a href="#"><div>Directory</div></a></li>
-						<li class="mega-menu"><a href="#"><div>To-Do</div></a></li>
+						<li class="mega-menu"><a href="todo.php"><div>To-Do</div></a></li>
 						<li class="mega-menu">
  				            <div id="top-cart">
 				                <a href="#" id="top-cart-trigger" class="notify">Notification</a>

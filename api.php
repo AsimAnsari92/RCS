@@ -1292,7 +1292,7 @@ function GetAlltask($db)
 {	
 	$admin		= $_POST['admin'];
 	$arrtask2		= array("admin" => $admin);
-	$statement= $db->prepare('SELECT * FROM	schoolforms.rcm_tasks_v2 WHERE admin=:admin order by Status desc');
+	$statement= $db->prepare('SELECT * FROM	schoolforms.rcm_tasks_v2 WHERE admin=:admin order by id desc');
  	$statement->execute($arrtask2);
  	if($emp=$statement->fetchAll(PDO::FETCH_ASSOC))
 	{

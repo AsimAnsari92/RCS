@@ -68,7 +68,7 @@
 
 	</style> 
 </head>
- <body class="stretched"  onload="username(),todayDate()">
+ <body class="stretched"  onload="username(),todayDate(),GetAlltask()">
  	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
@@ -81,37 +81,16 @@
 					<h3>Lorem ipsum dolor.</h3>
 			</div>
 		<div class="col-md-8 col-md-offset-2" style="top: 30px;margin-bottom: 10px;">
-<a href="#" class="button addbtn pull">
+<a href="#" class="button addbtn pull"  data-toggle="modal" data-target="#myModal">
 	<i class="icon-plus"></i>
 </a> 
 		
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Lorem ipsum dolor sit amet.</h3>
 			</div>
-			<div class="panel-body todoList">
-	<div href="#" class="list-group-item list-group-item" style="border-bottom: 2px solid #ddd !important;border:none" >
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, ipsum.
-	
-	 <a href="#" class="button button-3d button-mini button-rounded button-red pull-right" style="margin:0px;">
-	 	<i class="icon-remove ml-0"></i></a>
-	</div> 
- 	<div href="#" class="list-group-item list-group-item "style="border-bottom: 2px solid #ddd !important;border:none" >
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, dolor, reprehenderit! Libero autem, impedit magni non. Ex eligendi sapiente ipsa.
-	 <a href="#" class="button button-3d button-mini button-rounded button-red pull-right" style="margin:0px;"><i class="icon-remove ml-0"></i></a>
-	</div> 
- 	<div href="#" class="list-group-item list-group-item " style="border-bottom: 2px solid #ddd !important;border:none">
-		Lorem ipsum dolor.
-	 <a href="#" class="button button-3d button-mini button-rounded button-red pull-right" style="margin:0px;"><i class="icon-remove ml-0"></i></a>
-	</div> 
- 	<div href="#" class="list-group-item list-group-item " style="border-bottom: 2px solid #ddd !important;border:none">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	 <a href="#" class="button button-3d button-mini button-rounded button-red pull-right" style="margin:0px;"><i class="icon-remove ml-0"></i></a>
-	</div> 
- 	<div href="#" class="list-group-item list-group-item " style="border-bottom: 2px solid #ddd !important;border:none">
-		Lorem ipsum dolor sit amet, consectetur.	 
-		<a href="#" class="button button-3d button-mini button-rounded button-red pull-right" style="margin:0px;"><i class="icon-remove ml-0"></i></a>
-	</div> 
+			<div class="panel-body todoList"> 
  			</div>
 
 		</div>
@@ -125,7 +104,27 @@
 			  
 		</section><!-- #content end -->
 
-		
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-body">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Add To Do</h4>
+					</div>
+					<div class="modal-body">
+						<h4>Lorem ipsum dolor.</h4>
+						<textarea class="form-control" id="TaskType"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" onClick="AddTask()">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	     </div>
+
 		<footer id="footer" class="dark">
 			<!-- Copyrights
 			============================================= -->

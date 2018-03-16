@@ -2530,37 +2530,24 @@ if(mm<10) {
 } 
 
 today =  mm+ '/' + dd + '/' + yyyy;
-
-
-
+ 
  	DateOfTask = today;  
  	TaskType = $("#TaskType").val();  
- 	TaskPriority = $("#TaskPriority").val();  
- 	//DateOfTaskCompletion = $("#DateOfTaskCompletion").val();  
-	
- 	 
- 
+ 	TaskPriority = "High";   
  	if(TaskType!="" && TaskPriority!="") {
-		loading(); 	
+		//loading(); 	
 		$.ajax({
 			type: "POST", 
 			data:{admin:ADMIN,DateOfTask:DateOfTask,TaskType:TaskType,TaskPriority:TaskPriority},
-			url: "http://hivelet.com/rcm/test/api.php?action=AddTask", 
+			url: "api.php?action=AddTask", 
 			success:function(response)
 			{
-				//console.log(response);
-    			if(response=='"success"')
+     			if(response=='"success"')
 				{
  				 	GetAlltask();
  					SAlert("Record has been added.");
-					/*$("#DateOfTask").val("");  */
-					$("#TaskType").val("");  
-					$("#TaskPriority").val("");  
-					/*$("#DateOfTaskCompletion").val("");  */
-					 Cloading();
-					 
-
-				 } 
+ 					$("#TaskType").val("");  
+  				 } 
 				 else
 				 {
 					 Cloading();
@@ -2605,7 +2592,7 @@ function GetAlltask()
 		type: "POST", 
 		data:{admin:ADMIN},
 
- 		url: "http://hivelet.com/rcm/test/api.php?action=GetAlltask", 
+ 		url: "api.php?action=GetAlltask", 
 		success:function(response)
 		{
     response = JSON.parse(response);
@@ -2616,53 +2603,14 @@ function GetAlltask()
 				 {
 
 			 	tbl +='<div href="#" class="list-group-item list-group-item" style="border-bottom: 2px solid #ddd 		\		!important;border:none" >\
-					'+response[i]['tasktype']+ ' ' +response[i]['taskdate']+'\
+					'+response[i]['tasktype']+ '\
 					<a href="#" class="button button-3d button-mini button-rounded button-red pull-right" style="margin:0px;">\
 					<i class="icon-remove ml-0"></i></a>\
 					</div>';
 				}
-			 	
-			 }
-
+ 			 } 
 			 $('.todoList').html(tbl)
-
-			//Cloading();
-
-  			 /*if(response!='"No Records"')
-			 {
-				 $("#myTable").dataTable().fnDestroy();
-				 document.getElementById("AllTaskData").innerHTML ="";
-				 response=JSON.parse(response);
-				 for(var i=0;i<response.length;i++)
-				 { 
-				   if(response[i]['Status']=="Pending"){
-				 	document.getElementById("AllTaskData").innerHTML +='<tr>\
-					<td align="center">'+response[i]['taskdate']+'</td>\
- 					<td align="center">'+response[i]['tasktype'].substr(0,50)+'</td>\
-					<td align="center">'+response[i]['taskpriority']+'</td>\
-					<td align="center">'+response[i]['taskcompdate']+'</td>\
-					<td align="center">'+response[i]['Status']+'</td>\
-                    <td align="center" class="p-0 colorBlue">'+'<span class="cursor" onClick="gettask('+response[i]['id']+')">View</span> | <span class="cursor" onClick="deleteBox('+response[i]['id']+')">Delete</span></td>\</tr>';
-				   }
-				   else{
-					document.getElementById("AllTaskData").innerHTML +='<tr>\
-					<td align="center">'+response[i]['taskdate']+'</td>\
- 					<td align="center">'+response[i]['tasktype'].substr(0,50)+'</td>\
-					<td align="center">'+response[i]['taskpriority']+'</td>\
-					<td align="center">'+response[i]['taskcompdate']+'</td>\
-					<td align="center">'+response[i]['Status']+'</td>\
-                    <td align="center" class="p-0 colorBlue">'+'<span class="cursor" onClick="deleteBox('+response[i]['id']+')">Delete</span></td>\</tr>';
-                       }
-
-				 } 	
-				 DatatableInit2();			 
-  			 }
-  			 else{ 
-			 $("#myTable").dataTable().fnDestroy();
-			 InfoAlert("No records found.");
-			 document.getElementById("AllTaskData").innerHTML="";
-			}*/
-   		}, 
+    		}, 
 		error: function (xhr, status) 
 		{  Cloading();
 			 
